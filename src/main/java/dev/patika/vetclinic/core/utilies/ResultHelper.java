@@ -4,6 +4,7 @@ import dev.patika.vetclinic.core.result.Result;
 import dev.patika.vetclinic.core.result.ResultData;
 import dev.patika.vetclinic.dto.response.CursorResponse;
 import dev.patika.vetclinic.dto.response.vaccine.VaccineResponse;
+import dev.patika.vetclinic.entities.Appointment;
 import org.springframework.data.domain.Page;
 
 public class ResultHelper { // This class contains helper methods for Result objects.
@@ -62,4 +63,7 @@ public class ResultHelper { // This class contains helper methods for Result obj
         return new ResultData<>(false, Msg.SAME_VACCINE_NAME_AND_CODE, "400", null);
     }
 
+    public static <T>ResultData<T> appointmentAlreadyExists() {
+        return new ResultData<>(false, Msg.APPOINTMENT_ALREADY_EXISTS, "400", null);
+    }
 }

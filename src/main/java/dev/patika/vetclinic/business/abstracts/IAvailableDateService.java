@@ -20,4 +20,6 @@ public interface IAvailableDateService { // This interface includes the methods 
     Page<AvailableDate> cursor(int page, int size);
 
     List<AvailableDate> findByDoctorIdAndAvailableDate(Long doctorId, LocalDate date);
+
+    boolean isDoctorAvailable(Long doctorId, LocalDate date);
 }

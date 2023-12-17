@@ -7,23 +7,28 @@ import dev.patika.vetclinic.core.utilies.Msg;
 import dev.patika.vetclinic.core.utilies.ResultHelper;
 import dev.patika.vetclinic.dao.AnimalRepo;
 import dev.patika.vetclinic.dao.AppointmentRepo;
+import dev.patika.vetclinic.dao.AvailableDateRepo;
 import dev.patika.vetclinic.entities.Animal;
 import dev.patika.vetclinic.entities.Appointment;
+import dev.patika.vetclinic.entities.AvailableDate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class AppointmentManager implements IAppointmentService { // This class implements the IAppointmentService interface.
     private final AppointmentRepo appointmentRepo;
+    private final AvailableDateRepo availableDateRepo;
     private final AnimalRepo animalRepo;
 
-    public AppointmentManager(AppointmentRepo appointmentRepo, AnimalRepo animalRepo) {
+    public AppointmentManager(AppointmentRepo appointmentRepo, AvailableDateRepo availableDateRepo, AnimalRepo animalRepo) {
         this.appointmentRepo = appointmentRepo;
+        this.availableDateRepo = availableDateRepo;
         this.animalRepo = animalRepo;
     }
 
@@ -36,12 +41,21 @@ public class AppointmentManager implements IAppointmentService { // This class i
             return ResultHelper.animalNotFoundError();
         }
 
-        // Check if the doctor is available at the given date and time
-        List<Appointment> existingAppointments = appointmentRepo.findByDoctorIdAndAppointmentDate(appointment.getDoctor().getId(), dateTime);
-
-        // If there is already an appointment at the given date and time, throw an exception
-        if (!existingAppointments.isEmpty()) {
+        // Check if the doctor is available at the given date
+        if (!availableDateRepo.isDoctorAvailable(appointment.getDoctor().getId(), dateTime.toLocalDate())) {
             return ResultHelper.doctorNotAvailable();
+        }
+
+        // Check if the doctor already has an appointment at the given date and time
+        List<Appointment> existingAppointments = appointmentRepo.findByDoctorIdAndAppointmentDate(appointment.getDoctor().getId(), dateTime);
+        if (!existingAppointments.isEmpty()) {
+            return ResultHelper.appointmentAlreadyExists();
+        }
+
+        // Check if the animal already has an appointment at any time
+        List<Appointment> existingAnimalAppointments = appointmentRepo.findByAnimalId(appointment.getAnimal().getId());
+        if (!existingAnimalAppointments.isEmpty()) {
+            return ResultHelper.appointmentAlreadyExists();
         }
 
         // Set the appointment date
@@ -109,4 +123,6 @@ public class AppointmentManager implements IAppointmentService { // This class i
         Pageable pageable = PageRequest.of(page, size);
         return this.appointmentRepo.findAll(pageable);
     }
+
+
 }

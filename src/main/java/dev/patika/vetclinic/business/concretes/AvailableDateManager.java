@@ -5,6 +5,7 @@ import dev.patika.vetclinic.core.exception.NotFoundException;
 import dev.patika.vetclinic.core.result.ResultData;
 import dev.patika.vetclinic.core.utilies.Msg;
 import dev.patika.vetclinic.core.utilies.ResultHelper;
+import dev.patika.vetclinic.dao.AnimalRepo;
 import dev.patika.vetclinic.dao.AvailableDateRepo;
 import dev.patika.vetclinic.dao.DoctorRepo;
 import dev.patika.vetclinic.entities.AvailableDate;
@@ -20,10 +21,12 @@ import java.util.List;
 @Service
 public class AvailableDateManager implements IAvailableDateService { // This class implements the IAvailableDateService interface.
     private final AvailableDateRepo availableDateRepo;
+    private final AnimalRepo animalRepo;
     private final DoctorRepo doctorRepo;
 
-    public AvailableDateManager(AvailableDateRepo availableDateRepo, DoctorRepo doctorRepo) {
+    public AvailableDateManager(AvailableDateRepo availableDateRepo, AnimalRepo animalRepo, DoctorRepo doctorRepo) {
         this.availableDateRepo = availableDateRepo;
+        this.animalRepo = animalRepo;
         this.doctorRepo = doctorRepo;
     }
 
@@ -85,5 +88,11 @@ public class AvailableDateManager implements IAvailableDateService { // This cla
     public List<AvailableDate> findByDoctorIdAndAvailableDate(Long doctorId, LocalDate date) {
         // This method returns the available dates by doctor id and date.
         return this.availableDateRepo.findByDoctorIdAndAvailableDate(doctorId, date);
+    }
+
+    @Override
+    public boolean isDoctorAvailable(Long doctorId, LocalDate date) {
+        List<AvailableDate> availableDates = availableDateRepo.findByDoctorIdAndAvailableDate(doctorId, date);
+        return !availableDates.isEmpty();
     }
 }

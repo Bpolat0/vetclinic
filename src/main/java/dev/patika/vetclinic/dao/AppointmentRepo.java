@@ -5,6 +5,7 @@ import dev.patika.vetclinic.entities.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,5 +18,8 @@ public interface AppointmentRepo extends JpaRepository<Appointment, Long> { // T
 
     List<Appointment> findByAppointmentDateBetweenAndAnimal(LocalDateTime startDateTime, LocalDateTime endDateTime, Animal animal); // This method finds the appointments by appointment date between start date time and end date time and animal.
 
+    List<Appointment> findByAnimalIdAndAppointmentDate(Long animalId, LocalDateTime dateTime);
+
+    List<Appointment> findByAnimalId(Long animalId);
 }
 

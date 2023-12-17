@@ -5,6 +5,7 @@ import dev.patika.vetclinic.entities.Animal;
 import dev.patika.vetclinic.entities.Appointment;
 import org.springframework.data.domain.Page;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,6 +24,8 @@ public interface IAppointmentService { // This interface includes the methods th
     ResultData<Appointment> update(Long id, Appointment appointment);
 
     Page<Appointment> cursor(int page, int size);
+
+
 
 
 
