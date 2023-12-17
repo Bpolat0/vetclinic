@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface DoctorRepo extends JpaRepository<Doctor, Long> { // This interface contains CRUD operations for Doctor objects.
     boolean existsByEmail(String email);
     boolean existsByPhone(String phone);
+
+
 }

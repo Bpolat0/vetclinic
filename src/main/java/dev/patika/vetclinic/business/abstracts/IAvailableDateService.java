@@ -1,5 +1,6 @@
 package dev.patika.vetclinic.business.abstracts;
 
+import dev.patika.vetclinic.core.result.ResultData;
 import dev.patika.vetclinic.entities.AvailableDate;
 import org.springframework.data.domain.Page;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface IAvailableDateService { // This interface includes the methods that the AvailableDateManager class will implement.
 
-    AvailableDate save(AvailableDate availableDate);
+    ResultData<AvailableDate> save(AvailableDate availableDate);
 
     AvailableDate get(Long id);
 

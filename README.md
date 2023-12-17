@@ -93,9 +93,12 @@ Veritabanı altı ana varlık içerir: `Doktor`, `UygunTarih`, `Müşteri`, `Hay
 
 ## Kurulum
 
-1. Projeyi yerel makinenize klonlayın.
-2. `application.properties` dosyasını kendi veritabanı ayarlarınıza göre düzenleyin.
-3. Maven ile projeyi derleyin ve çalıştırın.
+1. Proje içindeki `vet-clinic-rest-api.sql` dosyasını kullanarak veritabanını oluşturun.
+2. `src/main/resources/application.properties` dosyasını açın ve veritabanı bağlantı bilgilerini güncelleyin.
+3. https://www.postman.com/bpolatt/workspace/vet-clinic-rest-api/overview adresinden Postman koleksiyonunu indirin.
+4. Postman koleksiyonunu Postman'e import edin.
+5. Postman koleksiyonundaki istekleri kullanarak API'yi test edin.
+
 
 ## Katkıda Bulunma
 

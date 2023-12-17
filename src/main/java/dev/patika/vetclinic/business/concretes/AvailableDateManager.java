@@ -2,9 +2,13 @@ package dev.patika.vetclinic.business.concretes;
 
 import dev.patika.vetclinic.business.abstracts.IAvailableDateService;
 import dev.patika.vetclinic.core.exception.NotFoundException;
+import dev.patika.vetclinic.core.result.ResultData;
 import dev.patika.vetclinic.core.utilies.Msg;
+import dev.patika.vetclinic.core.utilies.ResultHelper;
 import dev.patika.vetclinic.dao.AvailableDateRepo;
+import dev.patika.vetclinic.dao.DoctorRepo;
 import dev.patika.vetclinic.entities.AvailableDate;
+import dev.patika.vetclinic.entities.Doctor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,16 +20,27 @@ import java.util.List;
 @Service
 public class AvailableDateManager implements IAvailableDateService { // This class implements the IAvailableDateService interface.
     private final AvailableDateRepo availableDateRepo;
+    private final DoctorRepo doctorRepo;
 
-    public AvailableDateManager(AvailableDateRepo availableDateRepo) {
-        // This method injects the AvailableDateRepo object.
+    public AvailableDateManager(AvailableDateRepo availableDateRepo, DoctorRepo doctorRepo) {
         this.availableDateRepo = availableDateRepo;
+        this.doctorRepo = doctorRepo;
     }
 
     @Override
-    public AvailableDate save(AvailableDate availableDate) {
-        // This method saves the available date.
-        return this.availableDateRepo.save(availableDate);
+    public ResultData<AvailableDate> save(AvailableDate availableDate) {
+        // Check if the doctor with the given id exists
+        Doctor doctor = doctorRepo.findById(availableDate.getDoctor().getId())
+                .orElseThrow(() -> new NotFoundException("Doctor with id " + availableDate.getDoctor().getId() + " not found"));
+
+        // Check if an available date for the same doctor and date already exists
+        List<AvailableDate> existingDates = availableDateRepo.findByDoctorIdAndAvailableDate(doctor.getId(), availableDate.getAvailableDate());
+        if (!existingDates.isEmpty()) {
+            return ResultHelper.doctorNotAvailable();
+        }
+
+        // Save the available date
+        return ResultHelper.created(availableDateRepo.save(availableDate));
     }
 
     @Override

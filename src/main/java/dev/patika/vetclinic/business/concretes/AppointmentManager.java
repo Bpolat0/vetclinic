@@ -5,6 +5,7 @@ import dev.patika.vetclinic.core.exception.NotFoundException;
 import dev.patika.vetclinic.core.result.ResultData;
 import dev.patika.vetclinic.core.utilies.Msg;
 import dev.patika.vetclinic.core.utilies.ResultHelper;
+import dev.patika.vetclinic.dao.AnimalRepo;
 import dev.patika.vetclinic.dao.AppointmentRepo;
 import dev.patika.vetclinic.entities.Animal;
 import dev.patika.vetclinic.entities.Appointment;
@@ -19,13 +20,22 @@ import java.util.List;
 @Service
 public class AppointmentManager implements IAppointmentService { // This class implements the IAppointmentService interface.
     private final AppointmentRepo appointmentRepo;
+    private final AnimalRepo animalRepo;
 
-    public AppointmentManager(AppointmentRepo appointmentRepo) {
+    public AppointmentManager(AppointmentRepo appointmentRepo, AnimalRepo animalRepo) {
         this.appointmentRepo = appointmentRepo;
+        this.animalRepo = animalRepo;
     }
 
     @Override
     public ResultData<Appointment> createAppointment(Appointment appointment, LocalDateTime dateTime) {
+        // Check if the animal exists
+        Animal animal = animalRepo.findById(appointment.getAnimal().getId())
+                .orElseThrow(() -> new NotFoundException("Animal with id " + appointment.getAnimal().getId() + " not found"));
+        if (animal == null) {
+            return ResultHelper.animalNotFoundError();
+        }
+
         // Check if the doctor is available at the given date and time
         List<Appointment> existingAppointments = appointmentRepo.findByDoctorIdAndAppointmentDate(appointment.getDoctor().getId(), dateTime);
 
@@ -73,6 +83,13 @@ public class AppointmentManager implements IAppointmentService { // This class i
         // Check if the appointment with the given id exists
         Appointment existingAppointment = this.appointmentRepo.findById(id)
                 .orElseThrow(() -> new NotFoundException(Msg.NOT_FOUND));
+
+        // Check if the animal exists
+        Animal animal = animalRepo.findById(appointment.getAnimal().getId())
+                .orElse(null);
+        if (animal == null) {
+            return ResultHelper.animalNotFoundError();
+        }
 
         // Update the details of the existing appointment
         existingAppointment.setAppointmentDate(appointment.getAppointmentDate());

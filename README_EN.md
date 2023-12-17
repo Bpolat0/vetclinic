@@ -92,10 +92,12 @@ The database consists of six main entities: `Doctor`, `AvailableDate`, `Customer
 - `Appointment`: Represents the appointments for animals to see a doctor. Each appointment is associated with a `Doctor` and an `Animal`.
 
 ### Installation
-
-1. Clone the project to your local machine.
-2. Edit the `application.properties` file according to your database settings.
-3. Compile and run the project with Maven.
+ 
+1. Inside the project, create the database using the `vet-clinic-rest-api.sql` file.
+2. Open the `src/main/resources/application.properties` file and update the database connection information.
+3. Download the Postman collection from https://www.postman.com/bpolatt/workspace/vet-clinic-rest-api/overview.
+4. Import the Postman collection into Postman.
+5. Use the requests in the Postman collection to test the API.
 
 ### Contributing
 

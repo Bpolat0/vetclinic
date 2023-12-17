@@ -72,7 +72,7 @@ public class AnimalController { // This class contains methods that control the 
         // This method returns the customers with pagination.
         Page<Animal> animals = this.animalService.cursor(page, size);
         Page<AnimalResponse> animalResponsePage = animals
-                .map(customer -> this.modelMapper.forResponse().map(animals, AnimalResponse.class));
+                .map(animal -> this.modelMapper.forResponse().map(animal, AnimalResponse.class));
 
         return ResultHelper.cursor(animalResponsePage);
     }

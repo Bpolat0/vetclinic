@@ -11,6 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorUpdateRequest { // This data transfer object includes the information of the doctors.
+
+    @Min(value = 1, message = "Id 1'den küçük olamaz.")
+    private Long id;
+
     @NotNull(message = "Doktor adı boş olamaz.")
     private String name;
 
