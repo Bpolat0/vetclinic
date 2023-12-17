@@ -28,7 +28,7 @@ Veterinary Management System is a RESTful API that helps manage the operations o
 
 <img src="src/media/entity_relationship_diagram.svg" alt="Diagram_1" width="" />
 
-*Postman Collection*
+*Postman Collection https://www.postman.com/bpolatt/workspace/vet-clinic-rest-api/overview*
 
 <img src="src/media/postmen_collection.png" alt="Diagram_2" width="" />
 

@@ -28,7 +28,7 @@ Veteriner Yönetim Sistemi, bir veteriner kliniğinin işlerini yönetmesine yar
 
 <img src="src/media/entity_relationship_diagram.svg" alt="Diagram_1" width="" />
 
-*Postman Koleksiyonu*
+*Postman Koleksiyonu https://www.postman.com/bpolatt/workspace/vet-clinic-rest-api/overview*
 
 <img src="src/media/postmen_collection.png" alt="Diagram_2" width="" />
 
