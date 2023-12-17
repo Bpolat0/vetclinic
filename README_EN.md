@@ -1,6 +1,9 @@
-# Veteriner Yönetim Sistemi
+# Veterinary Management System
 
-[English](#english) | [Türkçe](#turkish)
+## Readme in Other Languages :books:
+
+- :tr: [Türkçe](README.md)
+- :uk: [English](README_EN.md)
 
 Veterinary Management System is a RESTful API that helps manage the operations of a veterinary clinic. This API provides endpoints to manage various resources, including veterinary doctors, customers, animals, vaccines, and appointments.
 ## <a name="english"></a>English

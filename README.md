@@ -1,5 +1,10 @@
 # Veteriner Yönetim Sistemi
 
+## Başka Dillerde Oku :books:
+
+- :tr: [Türkçe](README.md)
+- :uk: [English](README_EN.md)
+
 Veteriner Yönetim Sistemi, bir veteriner kliniğinin işlerini yönetmesine yardımcı olan bir RESTful API'dir. Bu API, veteriner doktorları, müşteriler, hayvanlar, aşılar ve randevular dahil olmak üzere çeşitli kaynakları yönetmek için endpoint'ler sağlar.
 
 ## Teknolojiler
