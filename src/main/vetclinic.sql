@@ -403,7 +403,11 @@ ALTER TABLE ONLY public.vaccines ALTER COLUMN vaccine_id SET DEFAULT nextval('pu
 --
 
 COPY public.animals (date_of_birth, animal_customer_id, animal_vaccine_id, id, animal_breed, animal_color, animal_gender, animal_name, animal_species) FROM stdin;
-2019-06-15	1	\N	2	İran Kedisi	Golden	MALE	Peluş	Kedi
+2020-04-20	1	\N	1	Golden Retriever	Golden	FEMALE	Boncuk	Köpek
+2018-10-10	2	\N	2	Alman Kurdu	Black	MALE	Leo	Köpek
+2021-07-20	3	\N	3	Siyam	Brown	FEMALE	Mia	Kedi
+2017-12-25	4	\N	4	Aslan Kedisi	Gold	MALE	Simba	Kedi
+2020-06-15	5	\N	5	Sokak Fare	Gray	MALE	Jerry	Fare
 \.
 
 
@@ -420,6 +424,8 @@ COPY public.appointments (animal_id, appointment_date, appointment_id, doctor_id
 --
 
 COPY public.available_dates (available_date, available_date_id, doctor_id) FROM stdin;
+2023-01-01	1	1
+2023-01-02	2	2
 \.
 
 
@@ -428,7 +434,11 @@ COPY public.available_dates (available_date, available_date_id, doctor_id) FROM 
 --
 
 COPY public.customers (customer_id, customer_address, customer_city, customer_email, customer_name, customer_phone) FROM stdin;
-1	Adres alanı	Ankara	info@patika.dev	Ahmet	123165465
+1	Adres 1	Ankara	info@patika.dev	Ahmet	123165465
+2	Adres 2	İstanbul	mehmet@example.com	Mehmet	987654321
+3	Adres 3	İzmir	ayse@vetclinic.com	Ayşe	5553332211
+4	Adres 4	Bursa	fatma@gmail.com	Fatma	1122334455
+5	Adres 5	Antalya	can@example.org	Can	5060708090
 \.
 
 
@@ -437,6 +447,8 @@ COPY public.customers (customer_id, customer_address, customer_city, customer_em
 --
 
 COPY public.doctors (doctor_id, doctor_address, doctor_city, doctor_email, doctor_name, doctor_phone) FROM stdin;
+1	123 Main St	New York	johndoe@example.com	Dr. John Doe	1234567890
+2	456 Elm St	Los Angeles	emilysmith@example.com	Dr. Emily Smith	9876543210
 \.
 
 
@@ -445,6 +457,11 @@ COPY public.doctors (doctor_id, doctor_address, doctor_city, doctor_email, docto
 --
 
 COPY public.vaccines (vaccine_protection_end_date, vaccine_protection_start_date, vaccine_id, vaccine_code, vaccine_name) FROM stdin;
+2024-06-15	2023-06-15	1	RB001	Rabies Vaccine
+2024-08-20	2023-08-20	2	CD002	Canine Distemper Vaccine
+2024-07-10	2023-07-10	3	FL003	Feline Leukemia Vaccine
+2024-09-25	2023-09-25	4	PV004	Parvovirus Vaccine
+2024-11-05	2023-11-05	5	BV005	Bordetella Vaccine
 \.
 
 
@@ -466,7 +483,7 @@ SELECT pg_catalog.setval('public.animals_animal_vaccine_id_seq', 1, false);
 -- Name: animals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.animals_id_seq', 2, true);
+SELECT pg_catalog.setval('public.animals_id_seq', 5, true);
 
 
 --
@@ -487,7 +504,7 @@ SELECT pg_catalog.setval('public.appointments_doctor_id_seq', 1, false);
 -- Name: available_dates_available_date_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.available_dates_available_date_id_seq', 1, false);
+SELECT pg_catalog.setval('public.available_dates_available_date_id_seq', 2, true);
 
 
 --
@@ -501,21 +518,21 @@ SELECT pg_catalog.setval('public.available_dates_doctor_id_seq', 1, false);
 -- Name: customers_customer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.customers_customer_id_seq', 1, true);
+SELECT pg_catalog.setval('public.customers_customer_id_seq', 5, true);
 
 
 --
 -- Name: doctors_doctor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.doctors_doctor_id_seq', 1, false);
+SELECT pg_catalog.setval('public.doctors_doctor_id_seq', 2, true);
 
 
 --
 -- Name: vaccines_vaccine_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.vaccines_vaccine_id_seq', 1, false);
+SELECT pg_catalog.setval('public.vaccines_vaccine_id_seq', 5, true);
 
 
 --
