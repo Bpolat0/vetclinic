@@ -25,42 +25,50 @@ Veterinary Management System is a RESTful API that helps manage the operations o
 
 ### API Endpoints
 
-#### Managing Veterinarians
+### Managing Veterinary Doctors
 
 - `POST /v1/doctors`: Creates a new doctor.
 - `GET /v1/doctors/{id}`: Retrieves a doctor with a specific ID.
 - `PUT /v1/doctors`: Updates a doctor.
 - `DELETE /v1/doctors/{id}`: Deletes a doctor with a specific ID.
 
-#### Managing the Available Days of Doctors
+### Managing Doctors' Available Dates
 
 - `POST /v1/available-dates`: Creates a new available date.
 - `GET /v1/available-dates/{id}`: Retrieves an available date with a specific ID.
 - `PUT /v1/available-dates`: Updates an available date.
 - `DELETE /v1/available-dates/{id}`: Deletes an available date with a specific ID.
 
-#### Managing Customers
+### Managing Customers
 
 - `POST /v1/customers`: Creates a new customer.
 - `GET /v1/customers/{id}`: Retrieves a customer with a specific ID.
 - `PUT /v1/customers`: Updates a customer.
 - `DELETE /v1/customers/{id}`: Deletes a customer with a specific ID.
+- `GET /v1/customers/{id}/animals`: Retrieves animals owned by a customer with a specific ID.
+- `GET /v1/customers/filterByName`: Filters customers by their names.
 
-#### Managing Animals Belonging to Customers
+### Managing Animals Belonging to Customers
 
 - `POST /v1/animals`: Creates a new animal.
 - `GET /v1/animals/{id}`: Retrieves an animal with a specific ID.
 - `PUT /v1/animals`: Updates an animal.
 - `DELETE /v1/animals/{id}`: Deletes an animal with a specific ID.
+- `GET /v1/animals/{id}/customer`: Retrieves the owner of an animal with a specific ID.
+- `GET /v1/animals/filter`: Filters animals by their names.
+- `GET /v1/animals/vaccines`: Retrieves vaccines administered to animals within a date range.
 
-#### Managing Vaccines Applied to Animals
+### Managing Vaccines Administered to Animals
 
 - `POST /v1/vaccines`: Creates a new vaccine.
 - `GET /v1/vaccines/{id}`: Retrieves a vaccine with a specific ID.
 - `PUT /v1/vaccines`: Updates a vaccine.
 - `DELETE /v1/vaccines/{id}`: Deletes a vaccine with a specific ID.
+- `GET /v1/vaccines/animal/{animalId}`: Retrieves vaccines administered to an animal with a specific ID.
+- `GET /v1/vaccines/protection-dates`: Retrieves vaccine protection dates within a given date range.
+- `PUT /v1/vaccines/vaccinate`: Administers a vaccine to an animal.
 
-#### Creating Appointments for Animals to Veterinarians
+### Creating Appointments for Animals with Veterinary Doctors
 
 - `POST /v1/appointments/create`: Creates a new appointment.
 - `GET /v1/appointments/{id}`: Retrieves an appointment with a specific ID.

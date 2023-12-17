@@ -42,6 +42,8 @@ Veteriner Yönetim Sistemi, bir veteriner kliniğinin işlerini yönetmesine yar
 - `GET /v1/customers/{id}`: Belirli bir ID'ye sahip müşteriyi alır.
 - `PUT /v1/customers`: Bir müşteriyi günceller.
 - `DELETE /v1/customers/{id}`: Belirli bir ID'ye sahip müşteriyi siler.
+- `GET /v1/customers/{id}/animals`: Belirli bir ID'ye sahip müşterinin hayvanlarını alır.
+- `GET /v1/customers/filterByName`: Müşterileri isimlerine göre filtreler.
 
 ### Müşterilere Ait Hayvanları Yönetme
 
@@ -49,6 +51,9 @@ Veteriner Yönetim Sistemi, bir veteriner kliniğinin işlerini yönetmesine yar
 - `GET /v1/animals/{id}`: Belirli bir ID'ye sahip hayvanı alır.
 - `PUT /v1/animals`: Bir hayvanı günceller.
 - `DELETE /v1/animals/{id}`: Belirli bir ID'ye sahip hayvanı siler.
+- `GET /v1/animals/{id}/customer`: Belirli bir ID'ye sahip hayvanın sahibini alır.
+- `GET /v1/animals/filter`: Hayvanları isimlerine göre filtreler.
+-  `GET /v1/animals/vaccines`: Tarih aralığına göre hayvanlara uygulanan aşıları alır.
 
 ### Hayvanlara Uygulanan Aşıları Yönetme
 
@@ -56,6 +61,9 @@ Veteriner Yönetim Sistemi, bir veteriner kliniğinin işlerini yönetmesine yar
 - `GET /v1/vaccines/{id}`: Belirli bir ID'ye sahip aşıyı alır.
 - `PUT /v1/vaccines`: Bir aşıyı günceller.
 - `DELETE /v1/vaccines/{id}`: Belirli bir ID'ye sahip aşıyı siler.
+- `GET /v1/vaccines/animal/{animalId}`: Belirli bir ID'ye sahip hayvana uygulanan aşıları alır.
+- `GET /v1/vaccines/protection-dates`: Girilen tarih aralığına göre aşı koruma tarihlerini alır.
+- `PUT /v1/vaccines/vaccinate`: Bir hayvana aşı uygular.
 
 ### Hayvanlar İçin Veteriner Hekimlere Randevu Oluşturma
 
