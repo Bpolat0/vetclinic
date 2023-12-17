@@ -1,0 +1,66 @@
+@startuml
+
+entity "Customer" as customer {
+  + id : Long
+  --
+  name : String
+  phone : String
+  mail : String
+  address : String
+  city : String
+}
+
+entity "Animal" as animal {
+  + id : Long
+  --
+  name : String
+  species : String
+  breed : String
+  gender : String
+  colour : String
+  dateOfBirth : LocalDate
+  # customer_id : Long
+}
+
+entity "Vaccine" as vaccine {
+  + id : Long
+  --
+  name : String
+  code : String
+  protectionStartDate : LocalDate
+  protectionFinishDate : LocalDate
+  # animal_id : Long
+}
+
+entity "Doctor" as doctor {
+  + id : Long
+  --
+  name : String
+  phone : String
+  mail : String
+  address : String
+  city : String
+}
+
+entity "AvailableDate" as availableDate {
+  + id : Long
+  --
+  availableDate : LocalDate
+  # doctor_id : Long
+}
+
+entity "Appointment" as appointment {
+  + id : Long
+  --
+  appointmentDate : LocalDateTime
+  # animal_id : Long
+  # doctor_id : Long
+}
+
+customer ||--o{ animal : has
+animal ||--o{ vaccine : has
+doctor ||--o{ availableDate : has
+doctor ||--o{ appointment : has
+animal ||--o{ appointment : has
+
+@enduml
