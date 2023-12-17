@@ -6,16 +6,12 @@
 - :uk: [English](README_EN.md)
 
 Veterinary Management System is a RESTful API that helps manage the operations of a veterinary clinic. This API provides endpoints to manage various resources, including veterinary doctors, customers, animals, vaccines, and appointments.
-## <a name="english"></a>English
 
-### Technologies
+### Tech Stack
 
-- Java 11
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- PostgreSQL
-- Maven
+<p align="center">
+    <img src="https://skillicons.dev/icons?i=spring,maven,git,github,postgresql,idea,postman,java" height="75" />
+</p>
 
 ### Main Features
 
@@ -25,6 +21,26 @@ Veterinary Management System is a RESTful API that helps manage the operations o
 - Managing animals belonging to customers: saving, updating, viewing, and deleting
 - Managing vaccines applied to animals: saving, updating, viewing, and deleting
 - Creating appointments for animals to veterinarians: saving, updating, viewing, and deleting
+
+### Project Screenshots
+
+*Entity Relationship Diagram*
+
+<img src="src/media/entity_relationship_diagram.svg" alt="Diagram_1" width="" />
+
+*Postman Collection*
+
+<img src="src/media/postmen_collection.png" alt="Diagram_2" width="" />
+
+*Database Structure and Sample Data*
+
+<img src="src/media/database.png" alt="Diagram_3" width="" />
+<img src="src/media/customers.png" alt="Diagram_4" width="" />
+<img src="src/media/animals.png" alt="Diagram_5" width="" />
+<img src="src/media/vaccines.png" alt="Diagram_6" width="" />
+<img src="src/media/doctors.png" alt="Diagram_7" width="" />
+<img src="src/media/availableDates.png" alt="Diagram_8" width="" />
+<img src="src/media/appointments.png" alt="Diagram_9" width="" />
 
 ### API Endpoints
 
@@ -92,12 +108,12 @@ The database consists of six main entities: `Doctor`, `AvailableDate`, `Customer
 - `Appointment`: Represents the appointments for animals to see a doctor. Each appointment is associated with a `Doctor` and an `Animal`.
 
 ### Installation
- 
-1. Inside the project, create the database using the `vet-clinic-rest-api.sql` file.
-2. Open the `src/main/resources/application.properties` file and update the database connection information.
-3. Download the Postman collection from https://www.postman.com/bpolatt/workspace/vet-clinic-rest-api/overview.
-4. Import the Postman collection into Postman.
-5. Use the requests in the Postman collection to test the API.
+1. Clone the repository.
+2. Inside the project, create the postgre database for using the `vetclinic.sql` file.
+3. Open the `src/main/resources/application.properties` file and update the database connection information.
+4. Download the Postman collection from https://www.postman.com/bpolatt/workspace/vet-clinic-rest-api/overview.
+5. Import the Postman collection into Postman.
+6. Use the requests in the Postman collection to test the API.
 
 ### Contributing
 
@@ -111,4 +127,21 @@ This project is open source and contributions are welcome. To contribute, please
 
 ### License
 
-This project is licensed under the MIT license. For more information, see the `LICENSE` file.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+
+### İletişim
+
+<p align="center">
+  <a href="https://github.com/Bpolat0">
+    <img src="https://skillicons.dev/icons?i=github" height="75" />
+
+  <a href="https://discord.com/users/m.batuhanpolat">
+    <img src="https://skillicons.dev/icons?i=discord" height="75" />
+
+  <a href="https://www.linkedin.com/in/mehmetbatuhanpolat/">
+    <img src="https://skillicons.dev/icons?i=linkedin" height="75" />
+  </a>
+  <a href="https://app.patika.dev/bpolat">
+    <img alt="Qries" src="https://patika-prod.s3.eu-central-1.amazonaws.com/staticFiles/patikaLogo.png"
+         width="90" height="90">
+</p>

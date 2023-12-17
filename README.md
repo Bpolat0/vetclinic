@@ -7,16 +7,13 @@
 
 Veteriner Yönetim Sistemi, bir veteriner kliniğinin işlerini yönetmesine yardımcı olan bir RESTful API'dir. Bu API, veteriner doktorları, müşteriler, hayvanlar, aşılar ve randevular dahil olmak üzere çeşitli kaynakları yönetmek için endpoint'ler sağlar.
 
-## Teknolojiler
+### Teknolojiler
 
-- Java 11
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- PostgreSQL
-- Maven
+<p align="center">
+    <img src="https://skillicons.dev/icons?i=spring,maven,git,github,postgresql,idea,postman,java" height="75" />
+</p>
 
-## Başlıca Özellikler
+### Başlıca Özellikler
 
 - Veteriner doktorları kaydetme, güncelleme, görüntüleme ve silme
 - Doktorların müsait günlerini kaydetme, güncelleme, görüntüleme ve silme
@@ -25,7 +22,27 @@ Veteriner Yönetim Sistemi, bir veteriner kliniğinin işlerini yönetmesine yar
 - Hayvanlara uygulanan aşıları kaydetme, güncelleme, görüntüleme ve silme
 - Hayvanlar için veteriner hekimlere randevu oluşturma, güncelleme, görüntüleme ve silme
 
-## API Endpoint'leri
+### Proje Ekran Görüntüleri
+
+*Entity Relationship Diagram*
+
+<img src="src/media/entity_relationship_diagram.svg" alt="Diagram_1" width="" />
+
+*Postman Koleksiyonu*
+
+<img src="src/media/postmen_collection.png" alt="Diagram_2" width="" />
+
+*Database Yapısı ve İçindeki Örnek Veriler*
+
+<img src="src/media/database.png" alt="Diagram_3" width="" />
+<img src="src/media/customers.png" alt="Diagram_4" width="" />
+<img src="src/media/animals.png" alt="Diagram_5" width="" />
+<img src="src/media/vaccines.png" alt="Diagram_6" width="" />
+<img src="src/media/doctors.png" alt="Diagram_7" width="" />
+<img src="src/media/availableDates.png" alt="Diagram_8" width="" />
+<img src="src/media/appointments.png" alt="Diagram_9" width="" />
+
+### API Endpoint'leri
 
 ### Veteriner Doktorları Yönetme
 
@@ -91,16 +108,16 @@ Veritabanı altı ana varlık içerir: `Doktor`, `UygunTarih`, `Müşteri`, `Hay
 - `Randevu`: Hayvanların bir doktora görünmesi için yapılan randevuları temsil eder. Her randevu bir `Doktor` ve bir `Hayvan` ile ilişkilidir.
 
 
-## Kurulum
+### Kurulum
+1. Bu projeyi klonlayın.
+2. Proje içindeki `vetclinic.sql` dosyasını kullanarak postgresql veritabanını oluşturun.
+3. `src/main/resources/application.properties` dosyasını açın ve veritabanı bağlantı bilgilerini güncelleyin.
+4. https://www.postman.com/bpolatt/workspace/vet-clinic-rest-api/overview adresinden Postman koleksiyonunu indirin.
+5. Postman koleksiyonunu Postman'e import edin.
+6. Postman koleksiyonundaki istekleri kullanarak API'yi test edin.
 
-1. Proje içindeki `vet-clinic-rest-api.sql` dosyasını kullanarak veritabanını oluşturun.
-2. `src/main/resources/application.properties` dosyasını açın ve veritabanı bağlantı bilgilerini güncelleyin.
-3. https://www.postman.com/bpolatt/workspace/vet-clinic-rest-api/overview adresinden Postman koleksiyonunu indirin.
-4. Postman koleksiyonunu Postman'e import edin.
-5. Postman koleksiyonundaki istekleri kullanarak API'yi test edin.
 
-
-## Katkıda Bulunma
+### Katkıda Bulunma
 
 Bu proje açık kaynaklıdır ve katkılarınıza açıktır. Katkıda bulunmak için lütfen aşağıdaki adımları izleyin:
 
@@ -110,6 +127,23 @@ Bu proje açık kaynaklıdır ve katkılarınıza açıktır. Katkıda bulunmak 
 4. Branch'ı Push edin (`git push origin feature/AmazingFeature`)
 5. Pull Request oluşturun
 
-## Lisans
+### License
 
-Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
+Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için [LICENSE](LICENSE) dosyasına bakın.
+
+### İletişim
+
+<p align="center">
+  <a href="https://github.com/Bpolat0">
+    <img src="https://skillicons.dev/icons?i=github" height="75" />
+
+  <a href="https://discord.com/users/m.batuhanpolat">
+    <img src="https://skillicons.dev/icons?i=discord" height="75" />
+
+  <a href="https://www.linkedin.com/in/mehmetbatuhanpolat/">
+    <img src="https://skillicons.dev/icons?i=linkedin" height="75" />
+  </a>
+  <a href="https://app.patika.dev/bpolat">
+    <img alt="Qries" src="https://patika-prod.s3.eu-central-1.amazonaws.com/staticFiles/patikaLogo.png"
+         width="90" height="90">
+</p>
