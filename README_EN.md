@@ -46,66 +46,62 @@ Veterinary Management System is a RESTful API that helps manage the operations o
 
 ### Managing Veterinary Doctors
 
-- `POST /v1/doctors`: Creates a new doctor.
-- `GET /v1/doctors/{id}`: Retrieves a doctor with a specific ID.
-- `PUT /v1/doctors`: Updates a doctor.
-- `DELETE /v1/doctors/{id}`: Deletes a doctor with a specific ID.
+- `POST http://localhost:8080/v1/doctors`: Creates a new doctor.
+- `GET http://localhost:8080/v1/doctors/1`: Retrieves a doctor with a specific ID.
+- `GET http://localhost:8080/v1/doctors?page=0&size=3`: Retrieves doctors with pagination and sorting.
+- `PUT http://localhost:8080/v1/doctors`: Updates a doctor.
+- `DELETE http://localhost:8080/v1/doctors/1`: Deletes a doctor with a specific ID.
 
-### Managing Doctors' Available Dates
+### Managing Available Dates for Doctors
 
-- `POST /v1/available-dates`: Creates a new available date.
-- `GET /v1/available-dates/{id}`: Retrieves an available date with a specific ID.
-- `PUT /v1/available-dates`: Updates an available date.
-- `DELETE /v1/available-dates/{id}`: Deletes an available date with a specific ID.
+- `POST http://localhost:8080/v1/available-dates`: Creates a new available date.
+- `GET http://localhost:8080/v1/available-dates/1`: Retrieves an available date with a specific ID.
+- `GET http://localhost:8080/v1/available-dates?page=0&size=3`: Retrieves available dates with pagination and sorting.
+- `PUT http://localhost:8080/v1/available-dates`: Updates an available date.
+- `DELETE http://localhost:8080/v1/available-dates/1`: Deletes an available date with a specific ID.
 
 ### Managing Customers
 
-- `POST /v1/customers`: Creates a new customer.
-- `GET /v1/customers/{id}`: Retrieves a customer with a specific ID.
-- `PUT /v1/customers`: Updates a customer.
-- `DELETE /v1/customers/{id}`: Deletes a customer with a specific ID.
-- `GET /v1/customers/{id}/animals`: Retrieves animals owned by a customer with a specific ID.
-- `GET /v1/customers/filterByName`: Filters customers by their names.
+- `POST http://localhost:8080/v1/customers`: Creates a new customer.
+- `GET http://localhost:8080/v1/customers/1`: Retrieves a customer with a specific ID.
+- `GET http://localhost:8080/v1/customers?page=0&size=3`: Retrieves customers with pagination and sorting.
+- `GET http://localhost:8080/v1/customers/1/animals`: Retrieves animals of a customer with a specific ID.
+- `GET http://localhost:8080/v1/customers/filterByName?name=ahmet`: Filters customers by their names.
+- `PUT http://localhost:8080/v1/customers`: Updates a customer.
+- `DELETE http://localhost:8080/v1/customers/1`: Deletes a customer with a specific ID.
 
 ### Managing Animals Belonging to Customers
 
-- `POST /v1/animals`: Creates a new animal.
-- `GET /v1/animals/{id}`: Retrieves an animal with a specific ID.
-- `PUT /v1/animals`: Updates an animal.
-- `DELETE /v1/animals/{id}`: Deletes an animal with a specific ID.
-- `GET /v1/animals/{id}/customer`: Retrieves the owner of an animal with a specific ID.
-- `GET /v1/animals/filter`: Filters animals by their names.
-- `GET /v1/animals/vaccines`: Retrieves vaccines administered to animals within a date range.
+- `POST http://localhost:8080/v1/animals`: Creates a new animal.
+- `GET http://localhost:8080/v1/animals/1`: Retrieves an animal with a specific ID.
+- `GET http://localhost:8080/v1/animals?page=0&size=3`: Retrieves animals with pagination and sorting.
+- `GET http://localhost:8080/v1/animals/1/customer`: Retrieves the owner of an animal with a specific ID.
+- `GET http://localhost:8080/v1/animals/filter?name=Peluş`: Filters animals by their names.
+- `GET http://localhost:8080/v1/animals/vaccines?startDate=2022-01-01&endDate=2024-12-31`: Retrieves vaccines applied to animals within a date range.
+- `PUT http://localhost:8080/v1/animals/1`: Updates an animal with a specific ID.
+- `DELETE http://localhost:8080/v1/animals/1`: Deletes an animal with a specific ID.
 
-### Managing Vaccines Administered to Animals
+### Managing Vaccines Applied to Animals
 
-- `POST /v1/vaccines`: Creates a new vaccine.
-- `GET /v1/vaccines/{id}`: Retrieves a vaccine with a specific ID.
-- `PUT /v1/vaccines`: Updates a vaccine.
-- `DELETE /v1/vaccines/{id}`: Deletes a vaccine with a specific ID.
-- `GET /v1/vaccines/animal/{animalId}`: Retrieves vaccines administered to an animal with a specific ID.
-- `GET /v1/vaccines/protection-dates`: Retrieves vaccine protection dates within a given date range.
-- `PUT /v1/vaccines/vaccinate`: Administers a vaccine to an animal.
+- `POST http://localhost:8080/v1/vaccines`: Creates a new vaccine.
+- `GET http://localhost:8080/v1/vaccines/1`: Retrieves a vaccine with a specific ID.
+- `GET http://localhost:8080/v1/vaccines?page=0&size=3`: Retrieves vaccines with pagination and sorting.
+- `GET http://localhost:8080/v1/vaccines/animal/1`: Retrieves vaccines applied to an animal with a specific ID.
+- `GET http://localhost:8080/v1/vaccines/protection-dates?start_date=2023-12-31&end_date=2024-12-31`: Retrieves vaccine protection dates within a specified date range.
+- `PUT http://localhost:8080/v1/vaccines`: Updates a vaccine.
+- `DELETE http://localhost:8080/v1/vaccines/1`: Deletes a vaccine with a specific ID.
+- `PUT http://localhost:8080/v1/vaccines/vaccinate`: Applies a vaccine to an animal.
 
 ### Creating Appointments for Animals with Veterinary Doctors
 
-- `POST /v1/appointments/create`: Creates a new appointment.
-- `GET /v1/appointments/{id}`: Retrieves an appointment with a specific ID.
-- `PUT /v1/appointments`: Updates an appointment.
-- `DELETE /v1/appointments/{id}`: Deletes an appointment with a specific ID.
-- `GET /v1/appointments/doctor/{doctorId}`: Retrieves appointments for a specific doctor within a specific date range.
-- `GET /v1/appointments/animal/{animalId}`: Retrieves appointments for a specific animal within a specific date range.
+- `POST http://localhost:8080/v1/appointments/create`: Creates an appointment for an animal.
+- `GET http://localhost:8080/v1/appointments/1`: Retrieves an appointment with a specific ID.
+- `GET http://localhost:8080/v1/appointments?page=0&size=3`: Retrieves appointments with pagination and sorting.
+- `GET http://localhost:8080/v1/appointments/doctor/1?start_date_time=2023-01-01T10:00:00&end_date_time=2023-05-01T11:00:00`: Retrieves appointments for a specific doctor within a specified date range.
+- `GET http://localhost:8080/v1/appointments/animal/2?start_date_time=2023-01-01T10:00:00&end_date_time=2023-02-01T11:00:00`: Retrieves appointments for a specific animal within a specified date range.
+- `PUT http://localhost:8080/v1/appointments`: Updates an appointment.
+- `DELETE http://localhost:8080/v1/appointments/1`: Deletes an appointment with a specific ID.
 
-### Database Structure
-
-The database consists of six main entities: `Doctor`, `AvailableDate`, `Customer`, `Animal`, `Vaccine`, and `Appointment`.
-
-- `Doctor`: Represents the veterinarians in the clinic. Each doctor has a list of `AvailableDate` and `Appointment`.
-- `AvailableDate`: Represents the available dates of a doctor. Each available date is associated with a `Doctor`.
-- `Customer`: Represents the customers of the clinic. Each customer has a list of `Animal`.
-- `Animal`: Represents the animals owned by customers. Each animal is associated with a `Customer` and has a list of `Vaccine` and `Appointment`.
-- `Vaccine`: Represents the vaccines applied to animals. Each vaccine is associated with an `Animal`.
-- `Appointment`: Represents the appointments for animals to see a doctor. Each appointment is associated with a `Doctor` and an `Animal`.
 
 ### Installation
 1. Clone the repository.
